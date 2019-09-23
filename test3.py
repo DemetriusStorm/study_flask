@@ -1,10 +1,12 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import random
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+rnd_xy = range(random.randrange(0, 25))
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
@@ -17,8 +19,8 @@ app.layout = html.Div(children=[
         id='example-graph',
         figure={
             'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
+                {'x': [x for x in range(random.randrange(2, 35))], 'y': [y for y in rnd_xy], 'type': 'bar', 'name': 'SF'},
+                {'x': [x for x in range(random.randrange(1, 25))], 'y': [y for y in rnd_xy], 'type': 'bar', 'name': u'Montréal'},
             ],
             'layout': {
                 'title': 'Dash Data Visualization'
